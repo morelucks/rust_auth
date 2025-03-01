@@ -1,17 +1,32 @@
-#[allow(dead_code)] 
-use rust_struct::User;
+#[allow(dead_code)]
+use rust_struct::{ManageUser, User};
+
 fn main() {
-
-    let user1 = User::new(
-        "Lucky".to_string(),
-        "l@gmail".to_string(),
+    let usr = ManageUser::new(
+        vec![
+            User::new("luck".to_string(), "luc@gmail.com".to_string(), 1, true),
+            User::new("lk".to_string(), "lc@gmail.com".to_string(), 1, true),
+            User::new("ck".to_string(), "c@gmail.com".to_string(), 1, true),
+        ],
         2,
-        true,
     );
+
     println!("USER...");
+    for user in usr.users{
+        println!("{:?}", user);
 
-    println!("{:?}", user1);
+    }
 
+    // println!("{:?}", usr.users[0]);
+    // let user1 = User::new(
+    //     "Lucky".to_string(),
+    //     "l@gmail".to_string(),
+    //     2,
+    //     true,
+    // );
+    // println!("USER...");
+
+    // println!("{:?}", usr.users[0]);
 
     // ..... STRUCT AND OWNERSHIP ..... //
 
@@ -20,7 +35,7 @@ fn main() {
     // let s1 = String::from("hello");
     // let s2 = s1;  // Ownership moves from s1 to s2
 
-    // println!("{}", s1); 
+    // println!("{}", s1);
     //..... grouping related data.....//
     // let user1 = User{
     //     username: String::from("alice"),,
@@ -34,8 +49,7 @@ fn main() {
     //     ..user1
     // };
     // let user1_name=user1.email.clone();
-    
+
     // println!("{:?}", user2);
     // println!("{user1.name}");
-
 }
