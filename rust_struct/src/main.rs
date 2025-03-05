@@ -1,8 +1,12 @@
 #[allow(dead_code)]
-use rust_struct::{ManageUser, User};
+use rust_struct::manage_user::ManageUser;
+use rust_struct::user:: User;
+use sha2::Digest;
 
 fn main() {
-    let usr = ManageUser::new(
+    let mut hasher =sha2::Sha256::new();
+
+    let mut usr = ManageUser::new(
         vec![
             User::new("luck".to_string(), "luc@gmail.com".to_string(), 1, true),
             User::new("lk".to_string(), "lc@gmail.com".to_string(), 1, true),
@@ -10,9 +14,11 @@ fn main() {
         ],
         2,
     );
-
+    usr.add_user(User::new("luck".to_string(), "luc@gmail.com".to_string(), 1, true));
+    
     println!("USER...");
     for user in usr.users{
+        // hasher.update(user);
         println!("{:?}", user);
 
     }
